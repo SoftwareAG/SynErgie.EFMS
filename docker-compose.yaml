@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2025 - 2025 Software GmbH, Darmstadt, Germany and/or its subsidiaries and/or its affiliates
+# SPDX-License-Identifier: Apache-2.0
+
+version: '3.2'
+
+services:
+  mongodb:
+    ports:
+      - '27017:27017'
+    logging:
+      options:
+        max-size: 1g
+    #environment:
+    #  - MONGO_INITDB_ROOT_USERNAME=
+    #  - MONGO_INITDB_ROOT_PASSWORD=
+    volumes:
+      - efmsmongodata:/data/db
+
+    image: mongo
+
+
+volumes:
+  efmsmongodata:
