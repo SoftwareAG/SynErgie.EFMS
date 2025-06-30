@@ -9,10 +9,10 @@ package com.sag.synergie.efms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 
 @SpringBootApplication
 public class EfmsApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(EfmsApplication.class, args);
 	}
