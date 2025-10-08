@@ -36,7 +36,7 @@ public class MqttClientController {
     }
 
     @GetMapping(value="/{clientId}")
-    public ResponseEntity<MqttClientConfig> getMqttClientConfig(@PathVariable("clientId")String clientId) {
+    public ResponseEntity<MqttClientConfig> getMqttClientConfig(@PathVariable UUID clientId) {
         Optional<MqttClientConfig> clientConfig = mqttClientService.getById(clientId);
         if (!clientConfig.isPresent())
             return ResponseEntity.notFound().build();
@@ -48,9 +48,9 @@ public class MqttClientController {
     @PostMapping
     public ResponseEntity<MqttClientConfig> addClientConfig(@RequestBody MqttClientConfig clientConfig) {
         // client config provided by user?
-        if (null == clientConfig.getId() || clientConfig.getId().isEmpty()) {
+        if (null == clientConfig.getId()) {
             // assign a random UUID
-            clientConfig.setId(UUID.randomUUID().toString());
+            clientConfig.setId(UUID.randomUUID());
         }
         else {
             // ID provided - any collisions?
@@ -68,7 +68,7 @@ public class MqttClientController {
     }
 
     @DeleteMapping(value="/{clientId}")
-    public ResponseEntity<Void> deleteClient(@PathVariable("clientId")String clientId) {
+    public ResponseEntity<Void> deleteClient(@PathVariable UUID clientId) {
         if (!mqttClientService.hasConfig(clientId))
             return ResponseEntity.notFound().build();
         if (mqttClientService.delete(clientId))
@@ -77,7 +77,7 @@ public class MqttClientController {
     }
 
     @PutMapping(value="/{clientId}")
-    public ResponseEntity<Void> updateClient(@PathVariable("clientId")String clientId,
+    public ResponseEntity<Void> updateClient(@PathVariable UUID clientId,
                                              @RequestBody MqttClientConfig clientConfig) {
         // integrity check: path matches config value?
         if (!clientId.equals(clientConfig.getId()))

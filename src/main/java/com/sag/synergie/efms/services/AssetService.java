@@ -46,11 +46,11 @@ public class AssetService {
         return assetRepository.findAll();
     }
 
-    public Optional<FlexibilityAsset> getById(String id) {
+    public Optional<FlexibilityAsset> getById(UUID id) {
         return assetRepository.findById(id);
     }
 
-    public boolean deleteById(String id, String userId) {
+    public boolean deleteById(UUID id, String userId) {
         if (!assetRepository.existsById(id))
             return false;
         FlexibilityAsset asset = assetRepository.findById(id).get();
@@ -64,7 +64,7 @@ public class AssetService {
         );
     }
 
-    public FlexibilityAsset createAsset(String id, URI schemaUri,
+    public FlexibilityAsset createAsset(UUID id, URI schemaUri,
                                         String json, String userId) {
         // make sure we don't overwrite existing assets
         if (assetRepository.existsById(id))

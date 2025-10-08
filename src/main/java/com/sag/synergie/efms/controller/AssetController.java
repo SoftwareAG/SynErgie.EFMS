@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -53,7 +54,7 @@ public class AssetController {
 
     @GetMapping(value="/{id}")
     public ResponseEntity<FlexibilityAsset> getFlexibilityAssetById(
-            @PathVariable("id") String id) {
+            @PathVariable UUID id) {
         Optional<FlexibilityAsset> asset = assetService.getById(id);
         if (asset.isPresent())
             return ResponseEntity.ok(asset.get());
@@ -61,7 +62,7 @@ public class AssetController {
     }
     @GetMapping(value="/{id}/json")
     public ResponseEntity<String> getFlexibilityAssetByIdAsJson(
-            @PathVariable("id") String id) {
+            @PathVariable UUID id) {
         Optional<FlexibilityAsset> asset = assetService.getById(id);
         if (asset.isPresent())
             return ResponseEntity.ok(asset.get().getAssetJson());
@@ -70,7 +71,7 @@ public class AssetController {
 
     @DeleteMapping(value="/{id}")
     public ResponseEntity<Void> deleteFlexibilityAssetById(
-            @PathVariable("id") String id,
+            @PathVariable UUID id,
             HttpServletRequest request) {
         String userId = null!=request.getUserPrincipal()?request.getUserPrincipal().getName():"default";
         if (assetService.deleteById(id, userId))
@@ -80,13 +81,13 @@ public class AssetController {
 
     @GetMapping(value="/type/{assetType}")
     public List<FlexibilityAsset> getFlexibilityAssetsByType(
-            @PathVariable("assetType")String assetType) {
+            @PathVariable String assetType) {
         return assetService.getByAssetType(assetType);
     }
 
     @GetMapping(value="/type/{assetType}/json")
     public List<String> getFlexibilityAssetsByTypeAsJson(
-            @PathVariable("assetType")String assetType) {
+            @PathVariable String assetType) {
         return assetService.getByAssetType(assetType)
                 .parallelStream()
                 .map(m->m.getAssetJson())
@@ -97,7 +98,7 @@ public class AssetController {
     @PostMapping(value="/type/{assetType}/{assetId}")
     public ResponseEntity<FlexibilityAsset> getFlexibilityAssetsByType(
             @PathVariable("assetType") String assetTypeName,
-            @PathVariable("assetId") String assetId,
+            @PathVariable UUID assetId,
             @RequestBody String assetJson,
             HttpServletRequest request) {
         if (!assetTypeService.hasAssetType(assetTypeName))

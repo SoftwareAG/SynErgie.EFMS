@@ -8,7 +8,10 @@
 package com.sag.synergie.efms.repositories;
 
 import com.sag.synergie.efms.model.MqttClientConfig;
+
+import java.util.UUID;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface MqttClientRepository extends MongoRepository<MqttClientConfig, String> {
+public interface MqttClientRepository extends MongoRepository<MqttClientConfig, UUID> {
 }

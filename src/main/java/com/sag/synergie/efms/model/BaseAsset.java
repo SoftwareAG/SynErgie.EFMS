@@ -12,12 +12,13 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
 import java.time.Instant;
+import java.util.UUID;
 
 @Getter
 @Setter
 public abstract class BaseAsset {
     @Id
-    private String id;
+    private UUID id;
     private Instant lastChange;
     private String userId;
 }

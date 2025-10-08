@@ -17,34 +17,34 @@ import java.util.*;
 @Service
 public class MqttClientService {
     private MqttClientRepository mqttClientRepository;
-    private Map<String, IMqttClient> clientMap;
+    private Map<UUID, IMqttClient> clientMap;
 
     public MqttClientService(MqttClientRepository mqttClientRepository) {
         this.mqttClientRepository = mqttClientRepository;
-        clientMap = new HashMap<String, IMqttClient>();
+        clientMap = new HashMap<UUID, IMqttClient>();
     }
 
     public Optional<MqttClientConfig> addConfig(MqttClientConfig clientConfig) {
         if (clientConfig.getId() == null) {
             // id not set by user, set to random UUID
-            clientConfig.setId(UUID.randomUUID().toString());
+            clientConfig.setId(UUID.randomUUID());
         }
         if (mqttClientRepository.existsById(clientConfig.getId()))
             return Optional.empty();
         return Optional.of(mqttClientRepository.save(clientConfig));
     }
 
-    public boolean delete(String clientId) {
+    public boolean delete(UUID clientId) {
         if (!mqttClientRepository.existsById(clientId))
             return false;
         mqttClientRepository.deleteById(clientId);
         return true;
     }
 
-    private Optional<IMqttClient> connect(String clientId, String url, String port,
+    private Optional<IMqttClient> connect(UUID clientId, String url, String port,
                             String username, String password) {
         try {
-            IMqttClient client = new MqttClient(url + ":" + port, clientId);
+            IMqttClient client = new MqttClient(url + ":" + port, clientId.toString());
             MqttConnectOptions options = new MqttConnectOptions();
             options.setAutomaticReconnect(true);
             if (null != username)
@@ -62,7 +62,7 @@ public class MqttClientService {
         }
     }
 
-    public boolean publish(String clientId, String topic, String message, int qos) {
+    public boolean publish(UUID clientId, String topic, String message, int qos) {
         if (!mqttClientRepository.existsById(clientId))
             return false;
 
@@ -114,11 +114,11 @@ public class MqttClientService {
         return mqttClientRepository.findAll();
     }
 
-    public Optional<MqttClientConfig> getById(String clientId) {
+    public Optional<MqttClientConfig> getById(UUID clientId) {
         return mqttClientRepository.findById(clientId);
     }
 
-    public boolean hasConfig(String clientId) {
+    public boolean hasConfig(UUID clientId) {
         return mqttClientRepository.existsById(clientId);
     }
 

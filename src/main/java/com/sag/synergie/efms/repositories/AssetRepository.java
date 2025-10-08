@@ -11,8 +11,9 @@ import com.sag.synergie.efms.model.FlexibilityAsset;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
+import java.util.UUID;
 import java.net.URI;
 
-public interface AssetRepository extends MongoRepository<FlexibilityAsset, String> {
+public interface AssetRepository extends MongoRepository<FlexibilityAsset, UUID> {
     public List<FlexibilityAsset> findBySchemaIn(List<URI> schemas);
 }

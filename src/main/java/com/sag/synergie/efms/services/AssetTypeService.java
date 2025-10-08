@@ -47,8 +47,8 @@ public class AssetTypeService {
         if (assetTypeRepository.existsByName(assetType.getName()))
             return Optional.empty();
         assetType.setUserId(userId);
-        if (null == assetType.getId() || assetType.getId().isEmpty())
-            assetType.setId(UUID.randomUUID().toString());
+        if (null == assetType.getId())
+            assetType.setId(UUID.randomUUID());
         if (null == assetType.getLastChange())
             assetType.setLastChange(Instant.now());
         // TODO: event

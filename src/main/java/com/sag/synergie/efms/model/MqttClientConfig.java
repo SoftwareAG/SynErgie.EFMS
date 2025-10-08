@@ -11,6 +11,9 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.UUID;
+
 import org.springframework.data.annotation.Id;
 
 @AllArgsConstructor
@@ -18,7 +21,7 @@ import org.springframework.data.annotation.Id;
 @Setter
 public class MqttClientConfig {
     @Id
-    private String id;
+    private UUID id;
     @NotNull
     private String url;
     @NotNull
