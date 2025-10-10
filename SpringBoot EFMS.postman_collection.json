@@ -1,0 +1,658 @@
+{
+	"info": {
+		"_postman_id": "d51ba207-3cb9-4e09-9318-3945430a1fe6",
+		"name": "SpringBoot EFMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30527774"
+	},
+	"item": [
+		{
+			"name": "schemas",
+			"item": [
+				{
+					"name": "schemas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/efms/schemas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"schemas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "schema by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/efms/schemas/d69b9bff-431c-4c72-ab2f-ab3cf2948a8f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"schemas",
+								"d69b9bff-431c-4c72-ab2f-ab3cf2948a8f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "schemas",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/efms/schemas/d69b9bff-431c-4c72-ab2f-ab3cf2948a8f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"schemas",
+								"d69b9bff-431c-4c72-ab2f-ab3cf2948a8f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create schema",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"uri\": \"https://git.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/energy_flexibility_data_model/-/blob/main/efdm_v1.0/JSON_schema/schema_flexibility_space.json\", \"name\":\"EFDM\", \"version\":\"1.0.0\", \"deprecated\": false, \"schemaJson\":\"{\\\"$schema\\\": \\\"https://json-schema.org/draft/2019-09/schema\\\", \\\"$comment\\\": \\\"This is a JSON-Schema for the flexibility space of the SynErgie EnergyFlexibilityDataModel EFDM - For further information check the repository.\\\", \\\"version\\\": \\\"1.0.0\\\", \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"metadata\\\": { \\\"$ref\\\": \\\"https://git.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/energy_flexibility_data_model/-/raw/main/efdm_v1.0/JSON_schema/schema_metadata.json\\\"}, \\\"flexibleLoads\\\": { \\\"type\\\": \\\"array\\\", \\\"minItems\\\": 1, \\\"items\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"flexibleLoadId\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"uuid\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"uuid\\\" }, \\\"comment\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"uuid\\\" ], \\\"additionalProperties\\\": false }, \\\"reactionDuration\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"s\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"minimum\\\": 0, \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false }, \\\"validity\\\": { \\\"type\\\": \\\"array\\\", \\\"minItems\\\": 1, \\\"items\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"from\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"date-time\\\" }, \\\"until\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"date-time\\\" }, \\\"temporalType\\\": { \\\"type\\\": \\\"string\\\", \\\"enum\\\": [ \\\"start\\\", \\\"total\\\", \\\"end\\\" ] } }, \\\"required\\\": [ \\\"from\\\", \\\"until\\\", \\\"temporalType\\\" ], \\\"additionalProperties\\\": false } }, \\\"powerStates\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"order\\\": { \\\"type\\\": \\\"string\\\", \\\"enum\\\": [ \\\"chronological\\\", \\\"arbitrary\\\" ] }, \\\"durationType\\\": { \\\"type\\\": \\\"string\\\", \\\"enum\\\": [ \\\"deliveryDuration\\\", \\\"holdingDuration\\\" ] }, \\\"values\\\": { \\\"type\\\": \\\"array\\\", \\\"minItems\\\": 1, \\\"items\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"power\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"kW\\\" }, \\\"minValue\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 }, \\\"maxValue\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"minValue\\\", \\\"maxValue\\\" ], \\\"additionalProperties\\\": false }, \\\"duration\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"s\\\" }, \\\"minValue\\\": { \\\"type\\\": \\\"number\\\", \\\"minimum\\\": 0, \\\"exclusiveMinimum\\\": 0, \\\"multipleOf\\\": 0.001 }, \\\"maxValue\\\": { \\\"type\\\": \\\"number\\\", \\\"minimum\\\": 0, \\\"exclusiveMinimum\\\": 0, \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\" ], \\\"additionalProperties\\\": false } }, \\\"required\\\": [ \\\"power\\\" ], \\\"additionalProperties\\\": false } } }, \\\"required\\\": [ \\\"values\\\" ], \\\"additionalProperties\\\": false }, \\\"usageNumber\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"None\\\" }, \\\"minValue\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 1, \\\"minimum\\\": 0 }, \\\"maxValue\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 1, \\\"minimum\\\": 0 } }, \\\"required\\\": [ \\\"unit\\\" ], \\\"additionalProperties\\\": false }, \\\"modulationNumber\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 1, \\\"minimum\\\": 0 }, \\\"powerGradients\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"activationGradient\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"kW/s\\\" }, \\\"minValue\\\": { \\\"type\\\": \\\"number\\\", \\\"minimum\\\": 0, \\\"multipleOf\\\": 0.001 }, \\\"maxValue\\\": { \\\"type\\\": \\\"number\\\", \\\"minimum\\\": 0, \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\" ], \\\"additionalProperties\\\": false }, \\\"modulationGradient\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"kW/s\\\" }, \\\"minValue\\\": { \\\"type\\\": \\\"number\\\", \\\"minimum\\\": 0, \\\"multipleOf\\\": 0.001 }, \\\"maxValue\\\": { \\\"type\\\": \\\"number\\\", \\\"minimum\\\": 0, \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\" ], \\\"additionalProperties\\\": false }, \\\"deactivationGradient\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"kW/s\\\" }, \\\"minValue\\\": { \\\"type\\\": \\\"number\\\", \\\"minimum\\\": 0, \\\"multipleOf\\\": 0.001 }, \\\"maxValue\\\": { \\\"type\\\": \\\"number\\\", \\\"minimum\\\": 0, \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\" ], \\\"additionalProperties\\\": false } }, \\\"additionalProperties\\\": false }, \\\"regenerationDuration\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"s\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"minimum\\\": 0, \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false }, \\\"flexibleLoadCosts\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"variableCost\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"EUR/kWh\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false }, \\\"costPerUsage\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"EUR/usage\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false }, \\\"fixedCost\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"EUR\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false } }, \\\"additionalProperties\\\": false }, \\\"orderConfirmationDeadline\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"deadlineType\\\": { \\\"type\\\": \\\"string\\\", \\\"enum\\\": [ \\\"relative\\\", \\\"absolute\\\" ] } }, \\\"allOf\\\": [ { \\\"if\\\": { \\\"properties\\\": { \\\"deadlineType\\\": { \\\"const\\\": \\\"absolute\\\" } } }, \\\"then\\\": { \\\"properties\\\": { \\\"deadlineValue\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"date-time\\\" } }, \\\"required\\\": [ \\\"deadlineValue\\\" ] } }, { \\\"if\\\": { \\\"properties\\\": { \\\"deadlineType\\\": { \\\"const\\\": \\\"relative\\\" } } }, \\\"then\\\": { \\\"properties\\\": { \\\"deadlineValue\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"s\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"minimum\\\": 0, \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ] } }, \\\"required\\\": [ \\\"deadlineValue\\\" ] } } ], \\\"unevaluatedProperties\\\": false, \\\"required\\\": [ \\\"deadlineType\\\", \\\"deadlineValue\\\" ] }, \\\"prices\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"variablePrice\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"EUR/kWh\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false }, \\\"pricePerUsage\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"EUR/usage\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false }, \\\"fixedPrice\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"EUR\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false } }, \\\"additionalProperties\\\": false }, \\\"location\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"meterLocation\\\": { \\\"type\\\": \\\"string\\\" }, \\\"voltageLevel\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"kV\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"minimum\\\": 0, \\\"exclusiveMinimum\\\": 0, \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false } }, \\\"required\\\": [ \\\"meterLocation\\\", \\\"voltageLevel\\\" ], \\\"additionalProperties\\\": false } }, \\\"required\\\": [ \\\"flexibleLoadId\\\", \\\"powerStates\\\" ], \\\"additionalProperties\\\": false } }, \\\"storages\\\": { \\\"type\\\": \\\"array\\\", \\\"minItems\\\": 1, \\\"items\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"storageId\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"uuid\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"uuid\\\" }, \\\"comment\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"uuid\\\" ], \\\"additionalProperties\\\": false }, \\\"usableCapacity\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"kWh\\\" }, \\\"minValue\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 }, \\\"maxValue\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"minValue\\\", \\\"maxValue\\\" ], \\\"additionalProperties\\\": false }, \\\"initialEnergyContent\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"kWh\\\" }, \\\"minValue\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 }, \\\"maxValue\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"maxValue\\\", \\\"minValue\\\" ], \\\"additionalProperties\\\": false }, \\\"targetEnergyContent\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"kWh\\\" }, \\\"minValue\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 }, \\\"maxValue\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\" ], \\\"additionalProperties\\\": false }, \\\"energyLoss\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"%/h\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"minimum\\\": 0, \\\"maximum\\\": 100, \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false }, \\\"suppliers\\\": { \\\"type\\\": \\\"array\\\", \\\"minItems\\\": 1, \\\"items\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"flexibleLoadId\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"uuid\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"uuid\\\" }, \\\"comment\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"uuid\\\" ], \\\"additionalProperties\\\": false }, \\\"conversionEfficiency\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"%\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"minimum\\\": 0, \\\"exclusiveMinimum\\\": 0, \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false } }, \\\"required\\\": [ \\\"flexibleLoadId\\\" ], \\\"additionalProperties\\\": false } }, \\\"drain\\\": { \\\"type\\\": \\\"array\\\", \\\"minItems\\\": 1, \\\"items\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"power\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"kW\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false }, \\\"timestamp\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"date-time\\\" } }, \\\"required\\\": [ \\\"power\\\", \\\"timestamp\\\" ], \\\"additionalProperties\\\": false } }, \\\"storageCosts\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"variableCost\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"EUR/kWh\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false }, \\\"costPerUsage\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"EUR/usage\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false }, \\\"fixedCost\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"EUR\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false } }, \\\"additionalProperties\\\": false } }, \\\"required\\\": [ \\\"storageId\\\", \\\"usableCapacity\\\", \\\"initialEnergyContent\\\", \\\"suppliers\\\" ], \\\"additionalProperties\\\": false } }, \\\"dependencies\\\": { \\\"type\\\": \\\"array\\\", \\\"minItems\\\": 1, \\\"items\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"dependencyId\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"uuid\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"uuid\\\" }, \\\"comment\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"uuid\\\" ], \\\"additionalProperties\\\": false }, \\\"triggeringFlexibleLoad\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"temporalType\\\": { \\\"type\\\": \\\"string\\\", \\\"enum\\\": [ \\\"start\\\", \\\"total\\\", \\\"end\\\" ] }, \\\"triggeringFlexibleLoadId\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"uuid\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"uuid\\\" }, \\\"comment\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"uuid\\\" ], \\\"additionalProperties\\\": false } }, \\\"required\\\": [ \\\"temporalType\\\", \\\"triggeringFlexibleLoadId\\\" ], \\\"additionalProperties\\\": false }, \\\"targetFlexibleLoad\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"temporalType\\\": { \\\"type\\\": \\\"string\\\", \\\"enum\\\": [ \\\"start\\\", \\\"total\\\", \\\"end\\\" ] }, \\\"targetFlexibleLoadId\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"uuid\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"uuid\\\" }, \\\"comment\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"uuid\\\" ], \\\"additionalProperties\\\": false } }, \\\"required\\\": [ \\\"temporalType\\\", \\\"targetFlexibleLoadId\\\" ], \\\"additionalProperties\\\": false }, \\\"logicalType\\\": { \\\"type\\\": \\\"string\\\", \\\"enum\\\": [ \\\"implies\\\", \\\"excludes\\\" ] }, \\\"applicabilityDuration\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"s\\\" }, \\\"minValue\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 }, \\\"maxValue\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\" ], \\\"additionalProperties\\\": false }, \\\"applicabilityConditions\\\": { \\\"type\\\": \\\"array\\\", \\\"minItems\\\": 1, \\\"items\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"formulaLeft\\\": { \\\"type\\\": \\\"string\\\" }, \\\"formulaRight\\\": { \\\"type\\\": \\\"string\\\" }, \\\"comparator\\\": { \\\"type\\\": \\\"string\\\", \\\"enum\\\": [ \\\"equals\\\", \\\"less\\\", \\\"lessEqual\\\", \\\"greater\\\", \\\"greaterEqual\\\" ] } }, \\\"required\\\": [ \\\"formulaLeft\\\", \\\"formulaRight\\\", \\\"comparator\\\" ], \\\"additionalProperties\\\": false } } }, \\\"required\\\": [ \\\"dependencyId\\\", \\\"triggeringFlexibleLoad\\\", \\\"targetFlexibleLoad\\\", \\\"logicalType\\\" ], \\\"additionalProperties\\\": false } } }, \\\"required\\\": [ \\\"metadata\\\", \\\"flexibleLoads\\\" ]}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/efms/schemas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"schemas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create schema v0.4",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"uri\": \"https://git.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/energy_flexibility_data_model/-/blob/main/efdm_v0.4/JSON_schema/schema_flexibilitySpace_efdm_v040.json\", \"name\":\"EFDM\", \"version\":\"0.4.0\", \"deprecated\": true, \"schemaJson\":\"{ \\\"$schema\\\": \\\"http://json-schema.org/draft-04/schema#\\\", \\\"$comment\\\": \\\"Author - t.koch@ptw.tu-darmstadt.de - This is a JSON-Schema for the SynErgie EnergyFlexibilityDataModel EFDM - For further information check this paper: https://doi.org/10.24406/IGCV-N-642370\\\", \\\"version\\\": \\\"0.4.0\\\", \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"flexibility\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"id\\\": { \\\"type\\\": \\\"string\\\" }, \\\"origin\\\": { \\\"type\\\": \\\"string\\\" }, \\\"flexibleLoads\\\": { \\\"type\\\": \\\"array\\\", \\\"items\\\": [ { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"flexibleLoadId\\\": { \\\"type\\\": \\\"string\\\" }, \\\"activationGradient\\\": { \\\"type\\\": \\\"string\\\" }, \\\"workingCosts\\\": { \\\"type\\\": \\\"string\\\" }, \\\"capacityCosts\\\": { \\\"type\\\": \\\"string\\\" }, \\\"totalFlexibilityCosts\\\": { \\\"type\\\": \\\"string\\\" }, \\\"marketingDeadline\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"date-time\\\" }, \\\"deactivationGradient\\\": { \\\"type\\\": \\\"string\\\" }, \\\"modulationGradients\\\": { \\\"type\\\": \\\"array\\\", \\\"items\\\": [ { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"min\\\": { \\\"type\\\": \\\"string\\\" }, \\\"max\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"min\\\", \\\"max\\\" ] } ] }, \\\"modulationNumber\\\": { \\\"type\\\": \\\"string\\\" }, \\\"powerStates\\\": { \\\"type\\\": \\\"array\\\", \\\"items\\\": [ { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"holdingDuration\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"min\\\": { \\\"type\\\": \\\"string\\\" }, \\\"max\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"min\\\", \\\"max\\\" ] }, \\\"value\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"min\\\": { \\\"type\\\": \\\"string\\\" }, \\\"max\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"min\\\", \\\"max\\\" ] } }, \\\"required\\\": [ \\\"holdingDuration\\\", \\\"value\\\" ] } ] }, \\\"workingPrice\\\": { \\\"type\\\": \\\"string\\\" }, \\\"capacityPrice\\\": { \\\"type\\\": \\\"string\\\" }, \\\"totalFlexibilityPrice\\\": { \\\"type\\\": \\\"string\\\" }, \\\"reactionDuration\\\": { \\\"type\\\": \\\"string\\\" }, \\\"regenerationDuration\\\": { \\\"type\\\": \\\"string\\\" }, \\\"usageNumber\\\": { \\\"type\\\": \\\"array\\\", \\\"items\\\": [ { \\\"type\\\": \\\"string\\\" } ] }, \\\"validity\\\": { \\\"type\\\": \\\"array\\\", \\\"items\\\": [ { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"start\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"date-time\\\" }, \\\"end\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"date-time\\\" }, \\\"temporalType\\\": { \\\"type\\\": \\\"string\\\", \\\"enum\\\": [\\\"\\\",\\\"START\\\", \\\"TOTAL\\\", \\\"END\\\"] } }, \\\"required\\\": [ \\\"start\\\", \\\"end\\\", \\\"temporalType\\\" ] } ] }, \\\"position\\\": { \\\"type\\\": \\\"string\\\" }, \\\"voltageLevel\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"flexibleLoadId\\\", \\\"activationGradient\\\", \\\"workingCosts\\\", \\\"capacityCosts\\\", \\\"totalFlexibilityCosts\\\", \\\"marketingDeadline\\\", \\\"deactivationGradient\\\", \\\"modulationGradients\\\", \\\"modulationNumber\\\", \\\"powerStates\\\", \\\"workingPrice\\\", \\\"capacityPrice\\\", \\\"totalFlexibilityPrice\\\", \\\"reactionDuration\\\", \\\"regenerationDuration\\\", \\\"usageNumber\\\", \\\"validity\\\", \\\"position\\\", \\\"voltageLevel\\\" ] } ] }, \\\"dependencies\\\": { \\\"type\\\": \\\"array\\\", \\\"items\\\": [ { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"logicalType\\\": { \\\"type\\\": \\\"string\\\", \\\"enum\\\": [\\\"\\\",\\\"IMPLIES\\\", \\\"EXCLUDES\\\"] }, \\\"applicabilityConditions\\\": { \\\"type\\\": \\\"array\\\", \\\"items\\\": [ { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"formulaLeft\\\": { \\\"type\\\": \\\"string\\\" }, \\\"formulaRight\\\": { \\\"type\\\": \\\"string\\\" }, \\\"comparator\\\": { \\\"type\\\": \\\"string\\\", \\\"enum\\\": [\\\"\\\",\\\"EQUALS\\\", \\\"LESS\\\", \\\"LESSEQUAL\\\", \\\"GREATER\\\", \\\"GREATEREQUAL\\\"] } }, \\\"required\\\": [ \\\"formulaLeft\\\", \\\"formulaRight\\\", \\\"comparator\\\" ] } ] }, \\\"applicabilityDuration\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"min\\\": { \\\"type\\\": \\\"string\\\" }, \\\"max\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"min\\\", \\\"max\\\" ] }, \\\"triggerFlexibleLoad\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"temporalType\\\": { \\\"type\\\": \\\"string\\\", \\\"enum\\\":[\\\"\\\",\\\"START\\\", \\\"TOTAL\\\", \\\"END\\\"] }, \\\"flexibleLoadId\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"temporalType\\\", \\\"flexibleLoadId\\\" ] }, \\\"targetFlexibleLoad\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"temporalType\\\": { \\\"type\\\": \\\"string\\\", \\\"enum\\\":[\\\"\\\",\\\"START\\\", \\\"TOTAL\\\", \\\"END\\\"] }, \\\"flexibleLoadId\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"temporalType\\\", \\\"flexibleLoadId\\\" ] } }, \\\"required\\\": [ \\\"logicalType\\\", \\\"applicabilityConditions\\\", \\\"applicabilityDuration\\\", \\\"triggerFlexibleLoad\\\", \\\"targetFlexibleLoad\\\" ] } ] }, \\\"storages\\\": { \\\"type\\\": \\\"array\\\", \\\"items\\\": [ { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"storageId\\\": { \\\"type\\\": \\\"string\\\" }, \\\"workingCosts\\\": { \\\"type\\\": \\\"string\\\" }, \\\"capacityCosts\\\": { \\\"type\\\": \\\"string\\\" }, \\\"totalFlexibilityCosts\\\": { \\\"type\\\": \\\"string\\\" }, \\\"drain\\\": { \\\"type\\\": \\\"array\\\", \\\"items\\\": [ { \\\"type\\\": \\\"string\\\" } ] }, \\\"energyLoss\\\": { \\\"type\\\": \\\"string\\\" }, \\\"initialEnergyContent\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"time\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"date-time\\\" }, \\\"value\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"min\\\": { \\\"type\\\": \\\"string\\\" }, \\\"max\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"min\\\", \\\"max\\\" ] } }, \\\"required\\\": [ \\\"time\\\", \\\"value\\\" ] }, \\\"suppliers\\\": { \\\"type\\\": \\\"array\\\", \\\"items\\\": [ { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"flexibleLoadId\\\": { \\\"type\\\": \\\"string\\\" }, \\\"conversionEfficiency\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"flexibleLoadId\\\", \\\"conversionEfficiency\\\" ] } ] }, \\\"targetEnergyContent\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"time\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"date-time\\\" }, \\\"value\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"min\\\": { \\\"type\\\": \\\"string\\\" }, \\\"max\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"min\\\", \\\"max\\\" ] } }, \\\"required\\\": [ \\\"time\\\", \\\"value\\\" ] }, \\\"usableCapacity\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"min\\\": { \\\"type\\\": \\\"string\\\" }, \\\"max\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"min\\\", \\\"max\\\" ] } }, \\\"required\\\": [ \\\"storageId\\\", \\\"workingCosts\\\", \\\"capacityCosts\\\", \\\"totalFlexibilityCosts\\\", \\\"drain\\\", \\\"energyLoss\\\", \\\"initialEnergyContent\\\", \\\"suppliers\\\", \\\"targetEnergyContent\\\", \\\"usableCapacity\\\" ] } ] } }, \\\"required\\\": [ \\\"id\\\", \\\"dependencies\\\", \\\"flexibleLoads\\\", \\\"storages\\\" ] } }, \\\"required\\\": [ \\\"flexibility\\\" ] }\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/efms/schemas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"schemas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create metadata schema",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"uri\": \"https://git.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/energy_flexibility_data_model/-/blob/main/efdm_v1.0/JSON_schema/schema_metadata.json\", \"name\":\"EFDM\", \"version\":\"1.0.0\", \"deprecated\": false, \"schemaJson\":\"{ \\\"$schema\\\": \\\"https://json-schema.org/draft/2019-09/schema\\\", \\\"$comment\\\": \\\"This is a JSON-Schema for the metadata of the SynErgie EnergyFlexibilityDataModel EFDM - For further information check the repository.\\\", \\\"version\\\": \\\"1.0.0\\\", \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"instanceId\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"uuid\\\" }, \\\"efdmVersion\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"versionNumber\\\": { \\\"type\\\": \\\"string\\\", \\\"pattern\\\": \\\"^\\\\d\\\\.\\\\d\\\\.\\\\d$\\\" }, \\\"schemaLink\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"uri\\\" } }, \\\"required\\\": [ \\\"versionNumber\\\", \\\"schemaLink\\\" ], \\\"additionalProperties\\\": false }, \\\"origin\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"originId\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"uuid\\\" }, \\\"timestamp\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"date-time\\\" } }, \\\"required\\\": [ \\\"originId\\\", \\\"timestamp\\\" ], \\\"additionalProperties\\\": false }, \\\"modification\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"modifierId\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"uuid\\\" }, \\\"timestamp\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"date-time\\\" } }, \\\"required\\\": [ \\\"modifierId\\\", \\\"timestamp\\\" ], \\\"additionalProperties\\\": false }, \\\"comment\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"instanceId\\\", \\\"efdmVersion\\\", \\\"origin\\\", \\\"modification\\\" ]}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/efms/schemas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"schemas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create schema FLMP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"uri\": \"https://git.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/energy_flexibility_data_model/-/blob/main/efdm_v1.0/JSON_schema/schema_flexible_load_measure_package.json\", \"name\":\"Flexible Load Measures Package\", \"version\":\"1.0.0\", \"deprecated\":false, \"schemaJson\":\"{ \\\"$schema\\\": \\\"https://json-schema.org/draft/2019-09/schema\\\", \\\"$comment\\\": \\\"This is a JSON-Schema for the flexible-load-measures-package of the SynErgie EnergyFlexibilityDataModel EFDM - For further information check the repository.\\\", \\\"version\\\": \\\"1.0.0\\\", \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"metadata\\\": { \\\"$ref\\\": \\\"https://git.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/energy_flexibility_data_model/-/blob/main/efdm_v1.0/JSON_schema/schema_metadata.json\\\" }, \\\"flexibleLoadMeasures\\\": { \\\"type\\\": \\\"array\\\", \\\"minItems\\\": 1, \\\"items\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"flexibleLoadMeasureId\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"uuid\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"uuid\\\" }, \\\"comment\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"uuid\\\" ], \\\"additionalProperties\\\": false }, \\\"flexibleLoadId\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"uuid\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"uuid\\\" }, \\\"comment\\\": { \\\"type\\\": \\\"string\\\" } }, \\\"required\\\": [ \\\"uuid\\\" ], \\\"additionalProperties\\\": false }, \\\"loadChangeProfile\\\": { \\\"type\\\": \\\"array\\\", \\\"minItems\\\": 1, \\\"items\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"power\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"kW\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false }, \\\"timestamp\\\": { \\\"type\\\": \\\"string\\\", \\\"format\\\": \\\"date-time\\\" } }, \\\"required\\\": [ \\\"power\\\", \\\"timestamp\\\" ], \\\"additionalProperties\\\": false } }, \\\"reward\\\": { \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"unit\\\": { \\\"type\\\": \\\"string\\\", \\\"const\\\": \\\"EUR\\\" }, \\\"value\\\": { \\\"type\\\": \\\"number\\\", \\\"multipleOf\\\": 0.001 } }, \\\"required\\\": [ \\\"unit\\\", \\\"value\\\" ], \\\"additionalProperties\\\": false } }, \\\"required\\\": [ \\\"flexibleLoadMeasureId\\\", \\\"flexibleLoadId\\\", \\\"loadChangeProfile\\\" ], \\\"additionalProperties\\\": false } } }, \\\"required\\\": [ \\\"metadata\\\", \\\"flexibleLoadMeasures\\\" ]}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/efms/schemas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"schemas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "asset types",
+			"item": [
+				{
+					"name": "add asset type",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"flexibilityspace\", \r\n    \"description\": \"Flexibility space\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/efms/assettypes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"assettypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add asset type FLMP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"flexibleloadmeasurespackage\", \r\n    \"description\": \"Flexibile load measures package\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/efms/assettypes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"assettypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"flexibilityspace\", \r\n    \"description\": \"Flexibility space test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/efms/assettypes/flexibilityspace",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"assettypes",
+								"flexibilityspace"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get asset types",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/efms/assettypes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"assettypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete asset type",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/efms/assettypes/4711",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"assettypes",
+								"4711"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "schema asset type assignments",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/efms/sata",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"sata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/efms/sata/ca4919d1-335f-44be-95c7-95a49eaa375e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"sata",
+								"ca4919d1-335f-44be-95c7-95a49eaa375e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/efms/sata/ca4919d1-335f-44be-95c7-95a49eaa375e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"sata",
+								"ca4919d1-335f-44be-95c7-95a49eaa375e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add assignment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"schema\": \"https://git.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/energy_flexibility_data_model/-/blob/main/efdm_v1.0/JSON_schema/schema_flexibility_space.json\", \r\n    \"assetType\": \"flexibilityspace\", \r\n    \"description\":\"Test description\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/efms/sata",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"sata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add assignment FLMP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"schema\": \"https://git.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/energy_flexibility_data_model/-/blob/main/efdm_v1.0/JSON_schema/schema_flexible_load_measure_package.json\", \r\n    \"assetType\": \"flexibleloadmeasurespackage\", \r\n    \"description\":\"FLMP v1.0.0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/efms/sata",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"sata"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "assets",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/efms/assets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"assets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create one flexibilityspace",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"metadata\": { \"instanceId\": \"6e8bc430-9c3a-11d9-9669-0800200c9a66\", \"efdmVersion\": { \"versionNumber\": \"1.0.0\", \"schemaLink\": \"https://git.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/energy_flexibility_data_model/-/blob/main/efdm_v1.0/JSON_schema/schema_flexibility_space.json\" }, \"origin\": { \"originId\": \"6e8bc430-9c3a-11d9-9669-0800200c9a67\", \"timestamp\": \"2023-10-26T14:30:15Z\" }, \"modification\": { \"modifierId\": \"6e8bc430-9c3a-11d9-9669-0800200c9a68\", \"timestamp\": \"2023-10-26T15:30:15Z\" }, \"comment\": \"This is a sample comment\" }, \"flexibleLoads\": [ { \"flexibleLoadId\": { \"uuid\": \"6e8bc430-9c3a-11d9-9669-0800200c9a69\", \"comment\": \"Flexible load UUID\" }, \"reactionDuration\": { \"unit\": \"s\", \"value\": 5.000 }, \"validity\": [ { \"from\": \"2023-10-26T14:00:00Z\", \"until\": \"2023-10-26T15:00:00Z\", \"temporalType\": \"start\" } ], \"powerStates\": { \"order\": \"chronological\", \"durationType\": \"deliveryDuration\", \"values\": [ { \"power\": { \"unit\": \"kW\", \"minValue\": 1.000, \"maxValue\": 5.000 }, \"duration\": { \"unit\": \"s\", \"minValue\": 1.001, \"maxValue\": 10.000 } } ] }, \"usageNumber\": { \"unit\": \"None\", \"minValue\": 1, \"maxValue\": 5 }, \"modulationNumber\": 1, \"powerGradients\": { \"activationGradient\": { \"unit\": \"kW/s\", \"minValue\": 0.001, \"maxValue\": 1.000 }, \"modulationGradient\": { \"unit\": \"kW/s\", \"minValue\": 0.001, \"maxValue\": 1.000 }, \"deactivationGradient\": { \"unit\": \"kW/s\", \"minValue\": 0.001, \"maxValue\": 1.000 } }, \"regenerationDuration\": { \"unit\": \"s\", \"value\": 5.000 }, \"flexibleLoadCosts\": { \"variableCost\": { \"unit\": \"EUR/kWh\", \"value\": 0.010 }, \"costPerUsage\": { \"unit\": \"EUR/usage\", \"value\": 0.010 }, \"fixedCost\": { \"unit\": \"EUR\", \"value\": 10.000 } }, \"orderConfirmationDeadline\": { \"deadlineType\": \"relative\", \"deadlineValue\": { \"unit\": \"s\", \"value\": 60.000 } }, \"prices\": { \"variablePrice\": { \"unit\": \"EUR/kWh\", \"value\": 0.010 }, \"pricePerUsage\": { \"unit\": \"EUR/usage\", \"value\": 0.010 }, \"fixedPrice\": { \"unit\": \"EUR\", \"value\": 10.000 } }, \"location\": { \"meterLocation\": \"Location A\", \"voltageLevel\": { \"unit\": \"kV\", \"value\": 11.000 } } } ], \"storages\": [ { \"storageId\": { \"uuid\": \"6e8bc430-9c3a-11d9-9669-0800200c9a66\", \"comment\": \"Storage UUID\" }, \"usableCapacity\": { \"unit\": \"kWh\", \"minValue\": 1.000, \"maxValue\": 10.000 }, \"initialEnergyContent\": { \"unit\": \"kWh\", \"minValue\": 2.000, \"maxValue\": 8.000 }, \"targetEnergyContent\": { \"unit\": \"kWh\", \"minValue\": 5.000, \"maxValue\": 9.000 }, \"energyLoss\": { \"unit\": \"%/h\", \"value\": 0.500 }, \"suppliers\": [ { \"flexibleLoadId\": { \"uuid\": \"6e8bc430-9c3a-11d9-9669-0800200c9a69\", \"comment\": \"Supplier UUID\" }, \"conversionEfficiency\": { \"unit\": \"%\", \"value\": 98.000 } } ], \"drain\": [ { \"power\": { \"unit\": \"kW\", \"value\": 5.000 }, \"timestamp\": \"2023-10-26T14:30:15Z\" }, { \"power\": { \"unit\": \"kW\", \"value\": 5.000 }, \"timestamp\": \"2023-10-26T14:30:15Z\" } ], \"storageCosts\": { \"variableCost\": { \"unit\": \"EUR/kWh\", \"value\": 0.050 }, \"costPerUsage\": { \"unit\": \"EUR/usage\", \"value\": 0.010 }, \"fixedCost\": { \"unit\": \"EUR\", \"value\": 10.000 } } } ], \"dependencies\": [ { \"dependencyId\": { \"uuid\": \"123e4567-e89b-12d3-a456-426614174000\", \"comment\": \"Dependency ID\" }, \"triggeringFlexibleLoad\": { \"temporalType\": \"start\", \"triggeringFlexibleLoadId\": { \"uuid\": \"123e4567-e89b-12d3-a456-426614174001\", \"comment\": \"Triggering Load ID\" } }, \"targetFlexibleLoad\": { \"temporalType\": \"end\", \"targetFlexibleLoadId\": { \"uuid\": \"123e4567-e89b-12d3-a456-426614174002\", \"comment\": \"Target Load ID\" } }, \"logicalType\": \"implies\", \"applicabilityDuration\": { \"unit\": \"s\", \"minValue\": 0.500, \"maxValue\": 300.000 }, \"applicabilityConditions\": [ { \"formulaLeft\": \"variableA\", \"formulaRight\": \"constant1\", \"comparator\": \"equals\" }, { \"formulaLeft\": \"variableB\", \"formulaRight\": \"constant2\", \"comparator\": \"lessEqual\" } ] } ] }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/efms/assets/type/flexibilityspace/6e8bc430-9c3a-11d9-9669-0800200c9a66",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"assets",
+								"type",
+								"flexibilityspace",
+								"6e8bc430-9c3a-11d9-9669-0800200c9a66"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create one flexibilityspace v0.4",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"metadata\": { \"instanceId\": \"6e8bc430-9c3a-11d9-9669-0800200c9a66\", \"efdmVersion\": { \"versionNumber\": \"1.0.0\", \"schemaLink\": \"https://git.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/energy_flexibility_data_model/-/blob/main/efdm_v1.0/JSON_schema/schema_flexibility_space.json\" }, \"origin\": { \"originId\": \"6e8bc430-9c3a-11d9-9669-0800200c9a67\", \"timestamp\": \"2023-10-26T14:30:15Z\" }, \"modification\": { \"modifierId\": \"6e8bc430-9c3a-11d9-9669-0800200c9a68\", \"timestamp\": \"2023-10-26T15:30:15Z\" }, \"comment\": \"This is a sample comment\" }, \"flexibleLoads\": [ { \"flexibleLoadId\": { \"uuid\": \"6e8bc430-9c3a-11d9-9669-0800200c9a69\", \"comment\": \"Flexible load UUID\" }, \"reactionDuration\": { \"unit\": \"s\", \"value\": 5.000 }, \"validity\": [ { \"from\": \"2023-10-26T14:00:00Z\", \"until\": \"2023-10-26T15:00:00Z\", \"temporalType\": \"start\" } ], \"powerStates\": { \"order\": \"chronological\", \"durationType\": \"deliveryDuration\", \"values\": [ { \"power\": { \"unit\": \"kW\", \"minValue\": 1.000, \"maxValue\": 5.000 }, \"duration\": { \"unit\": \"s\", \"minValue\": 1.001, \"maxValue\": 10.000 } } ] }, \"usageNumber\": { \"unit\": \"None\", \"minValue\": 1, \"maxValue\": 5 }, \"modulationNumber\": 1, \"powerGradients\": { \"activationGradient\": { \"unit\": \"kW/s\", \"minValue\": 0.001, \"maxValue\": 1.000 }, \"modulationGradient\": { \"unit\": \"kW/s\", \"minValue\": 0.001, \"maxValue\": 1.000 }, \"deactivationGradient\": { \"unit\": \"kW/s\", \"minValue\": 0.001, \"maxValue\": 1.000 } }, \"regenerationDuration\": { \"unit\": \"s\", \"value\": 5.000 }, \"flexibleLoadCosts\": { \"variableCost\": { \"unit\": \"EUR/kWh\", \"value\": 0.010 }, \"costPerUsage\": { \"unit\": \"EUR/usage\", \"value\": 0.010 }, \"fixedCost\": { \"unit\": \"EUR\", \"value\": 10.000 } }, \"orderConfirmationDeadline\": { \"deadlineType\": \"relative\", \"deadlineValue\": { \"unit\": \"s\", \"value\": 60.000 } }, \"prices\": { \"variablePrice\": { \"unit\": \"EUR/kWh\", \"value\": 0.010 }, \"pricePerUsage\": { \"unit\": \"EUR/usage\", \"value\": 0.010 }, \"fixedPrice\": { \"unit\": \"EUR\", \"value\": 10.000 } }, \"location\": { \"meterLocation\": \"Location A\", \"voltageLevel\": { \"unit\": \"kV\", \"value\": 11.000 } } } ], \"storages\": [ { \"storageId\": { \"uuid\": \"6e8bc430-9c3a-11d9-9669-0800200c9a66\", \"comment\": \"Storage UUID\" }, \"usableCapacity\": { \"unit\": \"kWh\", \"minValue\": 1.000, \"maxValue\": 10.000 }, \"initialEnergyContent\": { \"unit\": \"kWh\", \"minValue\": 2.000, \"maxValue\": 8.000 }, \"targetEnergyContent\": { \"unit\": \"kWh\", \"minValue\": 5.000, \"maxValue\": 9.000 }, \"energyLoss\": { \"unit\": \"%/h\", \"value\": 0.500 }, \"suppliers\": [ { \"flexibleLoadId\": { \"uuid\": \"6e8bc430-9c3a-11d9-9669-0800200c9a69\", \"comment\": \"Supplier UUID\" }, \"conversionEfficiency\": { \"unit\": \"%\", \"value\": 98.000 } } ], \"drain\": [ { \"power\": { \"unit\": \"kW\", \"value\": 5.000 }, \"timestamp\": \"2023-10-26T14:30:15Z\" }, { \"power\": { \"unit\": \"kW\", \"value\": 5.000 }, \"timestamp\": \"2023-10-26T14:30:15Z\" } ], \"storageCosts\": { \"variableCost\": { \"unit\": \"EUR/kWh\", \"value\": 0.050 }, \"costPerUsage\": { \"unit\": \"EUR/usage\", \"value\": 0.010 }, \"fixedCost\": { \"unit\": \"EUR\", \"value\": 10.000 } } } ], \"dependencies\": [ { \"dependencyId\": { \"uuid\": \"123e4567-e89b-12d3-a456-426614174000\", \"comment\": \"Dependency ID\" }, \"triggeringFlexibleLoad\": { \"temporalType\": \"start\", \"triggeringFlexibleLoadId\": { \"uuid\": \"123e4567-e89b-12d3-a456-426614174001\", \"comment\": \"Triggering Load ID\" } }, \"targetFlexibleLoad\": { \"temporalType\": \"end\", \"targetFlexibleLoadId\": { \"uuid\": \"123e4567-e89b-12d3-a456-426614174002\", \"comment\": \"Target Load ID\" } }, \"logicalType\": \"implies\", \"applicabilityDuration\": { \"unit\": \"s\", \"minValue\": 0.500, \"maxValue\": 300.000 }, \"applicabilityConditions\": [ { \"formulaLeft\": \"variableA\", \"formulaRight\": \"constant1\", \"comparator\": \"equals\" }, { \"formulaLeft\": \"variableB\", \"formulaRight\": \"constant2\", \"comparator\": \"lessEqual\" } ] } ] }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/efms/assets/type/flexibilityspace/6e8bc430-9c3a-11d9-9669-0800200c9a66",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"assets",
+								"type",
+								"flexibilityspace",
+								"6e8bc430-9c3a-11d9-9669-0800200c9a66"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create one flexible load measure package",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"metadata\": {\r\n        \"instanceId\": \"123e4567-e89b-12d3-a456-426614174000\",\r\n        \"efdmVersion\": {\r\n            \"versionNumber\": \"1.0.0\",\r\n            \"schemaLink\": \"https://git.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/energy_flexibility_data_model/-/blob/main/efdm_v1.0/JSON_schema/schema_flexible_load_measure_package.json\"\r\n        },\r\n        \"origin\": {\r\n            \"originId\": \"123e4567-e89b-12d3-a456-426614174001\",\r\n            \"timestamp\": \"2023-11-14T12:00:00Z\"\r\n        },\r\n        \"modification\": {\r\n            \"modifierId\": \"123e4567-e89b-12d3-a456-426614174002\",\r\n            \"timestamp\": \"2023-11-14T13:00:00Z\"\r\n        },\r\n        \"comment\": \"Sample instance for flexible-load-measures-package\"\r\n    },\r\n    \"flexibleLoadMeasures\": [\r\n        {\r\n            \"flexibleLoadMeasureId\": {\r\n                \"uuid\": \"123e4567-e89b-12d3-a456-426614174003\",\r\n                \"comment\": \"First flexible load measure\"\r\n            },\r\n            \"flexibleLoadId\": {\r\n                \"uuid\": \"123e4567-e89b-12d3-a456-426614174004\",\r\n                \"comment\": \"Associated flexible load\"\r\n            },\r\n            \"loadChangeProfile\": [\r\n                {\r\n                    \"power\": {\r\n                        \"unit\": \"kW\",\r\n                        \"value\": 100.0\r\n                    },\r\n                    \"timestamp\": \"2023-11-14T14:00:00Z\"\r\n                },\r\n                {\r\n                    \"power\": {\r\n                        \"unit\": \"kW\",\r\n                        \"value\": 50.0\r\n                    },\r\n                    \"timestamp\": \"2023-11-14T15:00:00Z\"\r\n                }\r\n            ],\r\n            \"reward\": {\r\n                \"unit\": \"EUR\",\r\n                \"value\": 500.0\r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/efms/assets/type/flexibleloadmeasurespackage/123e4567-e89b-12d3-a456-426614174000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"assets",
+								"type",
+								"flexibleloadmeasurespackage",
+								"123e4567-e89b-12d3-a456-426614174000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/efms/assets/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"assets",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by asset type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/efms/assets/type/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"assets",
+								"type",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/efms/assets/6e8bc430-9c3a-11d9-9669-0800200c9a66",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"efms",
+								"assets",
+								"6e8bc430-9c3a-11d9-9669-0800200c9a66"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
