@@ -1,22 +1,18 @@
 # SPDX-FileCopyrightText: 2025 - 2025 Software GmbH, Darmstadt, Germany and/or its subsidiaries and/or its affiliates
 # SPDX-License-Identifier: Apache-2.0
 
-version: '3.2'
-
 services:
   mongodb:
-    ports:
-      - '27017:27017'
+    image: mongo
     logging:
       options:
-        max-size: 1g
+        max-size: 10m
     volumes:
       - efmsmongodata:/data/db
     environment:
       - MONGO_INITDB_DATABASE=efmsdb
       #- MONGO_INITDB_ROOT_USERNAME=admin
       #- MONGO_INITDB_ROOT_PASSWORD=password
-    image: mongo
 
   app:
     build: .
@@ -26,9 +22,10 @@ services:
       - mongodb
     environment:
       SPRING_APPLICATION_JSON: '{
-          "spring.data.mongodb.uri" : "mongodb://mongodb:27017/efmsdb",
-          "spring.application.name":"EFMS",
-          "spring.jpa.generate-ddl":true
+          "spring.data.mongodb.uri": "mongodb://mongodb:27017/efmsdb",
+          "spring.application.name": "EFMS",
+          "spring.jpa.generate-ddl": true
         }'
+
 volumes:
   efmsmongodata:
