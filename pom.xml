@@ -9,11 +9,11 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>com.sag.synergie</groupId>
-	<artifactId>EFMS</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<groupId>com.softwareag.research.synergie</groupId>
+	<artifactId>efms</artifactId>
+	<version>1.0.0</version>
 	<name>EFMS</name>
-	<description>EFMS</description>
+	<description>Energy Flexibility Management Service (EFMS)</description>
 
 	<licenses>
 		<license>

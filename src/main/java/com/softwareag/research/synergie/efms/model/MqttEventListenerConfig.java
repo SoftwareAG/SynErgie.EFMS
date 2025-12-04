@@ -1,0 +1,35 @@
+/*
+ * SPDX-FileCopyrightText: 2025 - 2025 Software GmbH, Darmstadt, Germany and/or its subsidiaries and/or its affiliates
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ */
+
+package com.softwareag.research.synergie.efms.model;
+
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.UUID;
+
+import org.springframework.data.annotation.Id;
+
+@AllArgsConstructor
+@Getter
+@Setter
+public class MqttEventListenerConfig {
+    @Id
+    private UUID id;
+    @NotNull
+    private UUID clientId;
+    @NotNull
+    private String topic;
+    @NotNull
+    private int qos;
+    @NotNull
+    private boolean retain;
+    @NotNull
+    private boolean active;
+}
