@@ -1,0 +1,4 @@
+This work includes intellectual property of Software GmbH (www.softwareag.com)
+developed for the Kopernikus research project SynErgie, with funding from the
+German Federal Ministry of Research, Technology and Space (BMFTR).
+Copyright (c) 2024–2025 Software GmbH, Darmstadt, Germany
